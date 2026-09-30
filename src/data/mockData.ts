@@ -25,7 +25,7 @@ export const deductions: Deduction[] = [
 
 export const runningPayroll: PayrollComputation = {
   id: 'PAY-2026-09-30-001', employeeId: 'EMP-001', period: 'September 16–30, 2026', basicSalary: 21000,
-  daysWorked: 1, workedHours: 8, overtimeHours: 0, overtimePay: 0, allowances: 1200, grossPay: 22200,
+  daysWorked: 1, regularHours: 8, workedHours: 8, overtimeHours: 0, overtimePay: 0, allowances: 1200, grossPay: 22200,
   deductions: 5325, benefits: 500, netPay: 17375, status: 'RUNNING',
 }
 

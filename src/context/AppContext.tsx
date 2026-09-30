@@ -54,7 +54,7 @@ function cloneDeductions() {
 function buildPayroll(employee: Employee, employeeAttendance: AttendanceRecord[], employeeDeductions: Deduction[]): PayrollComputation {
   if (employee.id === runningPayroll.employeeId) return { ...runningPayroll }
 
-  const workedHours = employeeAttendance.reduce((total, record) => total + record.totalHours, 0)
+  const regularHours = employeeAttendance.reduce((total, record) => total + record.totalHours, 0)
   const overtimeHours = employeeAttendance.reduce((total, record) => total + record.overtime, 0)
   const basicSalary = Math.round(employee.salary / 2)
   const allowances = 1200
@@ -68,7 +68,8 @@ function buildPayroll(employee: Employee, employeeAttendance: AttendanceRecord[]
     period: runningPayroll.period,
     basicSalary,
     daysWorked: employeeAttendance.length,
-    workedHours,
+    regularHours,
+    workedHours: regularHours,
     overtimeHours,
     overtimePay,
     allowances,
@@ -116,12 +117,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
       if (!state) return current
       const nextAttendance = [record, ...state.attendance]
       const currentPayroll = state.payroll
+      const nextRegularHours = nextAttendance.reduce((total, item) => total + item.totalHours, 0)
       const nextOvertimeHours = nextAttendance.reduce((total, item) => total + item.overtime, 0)
       const grossPay = currentPayroll.basicSalary + currentPayroll.allowances + nextOvertimeHours * OVERTIME_RATE
       const nextPayroll: PayrollComputation = {
         ...currentPayroll,
         daysWorked: nextAttendance.length,
-        workedHours: nextAttendance.reduce((total, item) => total + item.totalHours, 0),
+        regularHours: nextRegularHours,
+        workedHours: nextRegularHours,
         overtimeHours: nextOvertimeHours,
         overtimePay: nextOvertimeHours * OVERTIME_RATE,
         grossPay,

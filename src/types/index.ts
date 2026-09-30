@@ -37,6 +37,7 @@ export interface PayrollComputation {
   period: string
   basicSalary: number
   daysWorked: number
+  regularHours: number
   workedHours: number
   overtimeHours: number
   overtimePay: number
