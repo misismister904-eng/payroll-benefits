@@ -1,0 +1,19 @@
+{
+  "routes": [
+    { "path": "/login", "title": "Sign in" },
+    { "path": "/dashboard", "title": "Dashboard" },
+    { "path": "/employees", "title": "Employees" },
+    { "path": "/employees/:employeeId", "title": "Employee profile" },
+    { "path": "/attendance", "title": "Attendance" },
+    { "path": "/payroll/running", "title": "Running payroll" },
+    { "path": "/deductions", "title": "Deductions" },
+    { "path": "/payslips/:payslipId", "title": "Digital payslip" },
+    { "path": "/compensation", "title": "Compensation planning" },
+    { "path": "/claims", "title": "Claims & reimbursement" },
+    { "path": "/benefits", "title": "HMO & benefits" },
+    { "path": "/reports", "title": "Payroll reports" },
+    { "path": "/analytics", "title": "HR analytics" },
+    { "path": "/salary-history", "title": "Salary history" },
+    { "path": "/audit-log", "title": "Audit log" }
+  ]
+}
